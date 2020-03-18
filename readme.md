@@ -1,28 +1,85 @@
-# Base
+# 1. Node.js Service
 
-## Projects
+<!-- TOC -->
 
-- amd
-	- on
-	- global
-	- web
-- cjs
-	- config
-	- invoke
-	- server
+- [1. Description](#1-description)
+- [服务](#服务)
+- [2. 注意](#2-注意)
+- [3. 部署](#3-部署)
+- [4. Config](#4-config)
+	- [4.1. mm.json](#41-mmjson)
+		- [4.1.1. rule](#411-rule)
+	- [4.2. log4js.json](#42-log4jsjson)
 
-## Branches
+<!-- /TOC -->
 
-- amd
-	- tpl
-		- tpl-web
-		- tpl-wxapp
-		- tpl-mobile
-	- atom-web
-	- atom-wxapp
-	- widgets
-- cjs
-	- atom-nodejs
-	- atom-mobile
-	- widgets-mobile
-	- widgets-wxapp
+## 1. Description
+
+定时任务，适用于例如“每天的0点”或“每年3,6,9月份的第二个周日”执行的任务，如果是每隔一分钟执行一次的任务，则不适用于这类任务.
+
+## 服务
+
+根据配置定时调用某个服务，服务调用与普通的服务区别：
+
+1. 无动态参数，如果需要配置某些固定参数，请在mm.json中的data中配置
+1. 无返回值
+
+## 2. 注意
+
+服务不可部署多个实例
+
+另外，由于该服务生成编号时为了保证生成的编号唯一，需要排队处理大量的并发请求，所以在使用中，请一定避免多次调用。
+
+## 3. 部署
+
+1. 生成配置表，根据实际部署情况修改
+1. 安装`yarn add @mmstudio/schedule`
+1. 启动`./node_moduels/.bin/mm-schedule`
+
+## 4. Config
+
+### 4.1. mm.json
+
+``` json
+{
+	"jobs": [
+		{
+			"service": "s001",
+			"description": "example for schedule",
+			"rule": "* * * * * *",
+			"start": "",
+			"end": "",
+			"data": {
+				"test": "feidao"
+			}
+		}
+	]
+}
+```
+
+#### 4.1.1. rule
+
+```txt
+*    *    *    *    *    *
+┬    ┬    ┬    ┬    ┬    ┬
+│    │    │    │    │    │
+│    │    │    │    │    └ 一周中的第几天 (0 - 7) (0 或 7 为周日)
+│    │    │    │    └───── 月 (1 - 12)
+│    │    │    └────────── 一个月的第几天 (1 - 31)
+│    │    └─────────────── 小时 (0 - 23)
+│    └──────────────────── 分钟 (0 - 59)
+└───────────────────────── 秒 (0 - 59, 非必填)
+```
+
+说明：
+
+- `*` 表示全部
+- `?` 不详，试验结果在第4项（一个月的第几天）和第6项(一周中的第几天)中与`*`等效
+- `m-n` 表示从`m`到`n`期间都执行
+- `*/n` 表示每隔`n`个时间单位执行一次
+- `m,n` 表示`m`和`n`都执行
+- `#m` 表示第二个，如`* * * * * 0#m`表示每个月的第二个周日
+
+### 4.2. log4js.json
+
+日志配置，具体请参考官方说明：[log4js](https://github.com/nomiddlename/log4js-node)

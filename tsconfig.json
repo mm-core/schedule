@@ -1,5 +1,7 @@
 {
-	"exclude": [],
+	"exclude": [
+		"./dist/"
+	],
 	"include": [
 		"./src/**/*.ts"
 	],
@@ -7,15 +9,13 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"target": "esnext",
-		"jsx": "react",
 		"noImplicitAny": true,
 		"sourceMap": false,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
-		"strictNullChecks": true,
+		"strictNullChecks": false,
 		"noImplicitThis": true,
-		"rootDir": "./src",
-		"outDir": "./dist/",
+		"rootDir": "./src/",
 		"allowJs": false,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
@@ -33,6 +33,7 @@
 		"inlineSources": false,
 		"isolatedModules": false,
 		"lib": [
+			"dom",
 			"esnext"
 		],
 		"listFiles": false,
@@ -43,26 +44,32 @@
 		"moduleResolution": "node",
 		"noEmitHelpers": false,
 		"noEmitOnError": false,
-		"noImplicitReturns": true,
+		"noImplicitReturns": false,
 		"noImplicitUseStrict": false,
 		"maxNodeModuleJsDepth": 0,
 		"noLib": false,
-		"noFallthroughCasesInSwitch": true,
+		"outDir": "./dist",
+		"noFallthroughCasesInSwitch": false,
 		"noResolve": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"paths": {},
 		"preserveConstEnums": false,
 		"pretty": true,
+		// "mapRoot": "",
 		"removeComments": false,
-		"skipDefaultLibCheck": true,
-		"skipLibCheck": true,
+		"skipDefaultLibCheck": true, // default false
+		"skipLibCheck": true, // default false
 		"stripInternal": false,
 		"suppressExcessPropertyErrors": false,
-		"suppressImplicitAnyIndexErrors": true,
+		"suppressImplicitAnyIndexErrors": true, // default false
 		"traceResolution": false,
-		"typeRoots": [],
-		"types": [],
+		"typeRoots": [
+			// "./node_modules/@types/"
+		],
+		"types": [
+			"node"
+		],
 		"watch": false
 	}
 }

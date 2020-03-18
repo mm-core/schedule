@@ -1,23 +1,25 @@
 {
-	"name": "@mmstudio/base",
+	"name": "@mmstudio/schedule",
 	"version": "1.0.0",
-	"description": "$desc",
+	"description": "Node.js schedule service.",
 	"scripts": {
-		"test": "tsc && ava ./tests/*.js",
+		"test": "cp ./tests/s001.js ./dist/ && npm start",
+		"start": "tsc && node ./dist/index.js",
 		"watch": "tsc -w & ava --watch ./tests/*.js",
 		"clean": "del-cli ./dist/",
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
 		"build": "npm run clean && npm run lint && npm run compile",
-		"up": "git merge master"
+		"up": "git pull git@gitee.com:mmstudio/base.git cjs"
+	},
+	"bin": {
+		"mm-schedule": "./dist/index.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://gitee.com/mmstudio/base"
+		"url": "https://gitee.com/mmstudio/schedule"
 	},
 	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
 	"keywords": [
 		"mm",
 		"mmstudio",
@@ -28,19 +30,28 @@
 		"控件",
 		"框架"
 	],
-	"author": {
-		"name": "$user",
-		"email": "$email@xxx.com"
-	},
-	"maintainers": [
-		{
+	"people fields": {
+		"author": {
 			"name": "taoqf",
 			"email": "tao_qiufeng@126.com"
-		}
-	],
+		},
+		"contributors": []
+	},
 	"license": "MIT",
-	"dependencies": {},
+	"peerDependencies": {
+		"@mmstudio/config": "*"
+	},
+	"dependencies": {
+		"@mmstudio/invoke": "1.1.202003181231",
+		"log4js": "6.1.2",
+		"node-schedule": "1.3.2"
+	},
 	"devDependencies": {
+		"@mmstudio/config": "latest",
+		"@mmstudio/global": "latest",
+		"@types/node": "latest",
+		"@types/node-schedule": "latest",
+		"@types/uuid": "latest",
 		"@typescript-eslint/eslint-plugin": "latest",
 		"@typescript-eslint/parser": "latest",
 		"ava": "latest",
@@ -48,6 +59,8 @@
 		"eslint": "latest",
 		"eslint-config-prettier": "latest",
 		"eslint-plugin-import": "latest",
-		"typescript": "next"
+		"prettier": "latest",
+		"typescript": "next",
+		"uuid": "latest"
 	}
 }
