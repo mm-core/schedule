@@ -1,6 +1,6 @@
 {
 	"name": "@mmstudio/schedule",
-	"version": "1.0.202003181254",
+	"version": "1.0.202003181255",
 	"description": "Node.js schedule service.",
 	"scripts": {
 		"test": "cp ./tests/s001.js ./dist/ && npm start",
