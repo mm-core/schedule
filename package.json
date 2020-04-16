@@ -16,9 +16,10 @@
 		"mm-schedule": "./dist/index.js"
 	},
 	"repository": {
-		"type": "git",
-		"url": "https://gitee.com/mmstudio/schedule"
+		"type": "https+git",
+		"url": "https://github.com/mm-core/schedule.git"
 	},
+	"homepage": "https://mm-works.github.io",
 	"main": "dist/index.js",
 	"keywords": [
 		"mm",
