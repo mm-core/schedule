@@ -40,9 +40,9 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@mmstudio/invoke": "1.1.202003191022",
-		"@mmstudio/config": "1.0.202003191017",
-		"log4js": "6.1.2",
+		"@mmstudio/invoke": "1.1.202004170948",
+		"@mmstudio/config": "1.0.202004161715",
+		"log4js": "6.2.0",
 		"node-schedule": "1.3.2"
 	},
 	"devDependencies": {
