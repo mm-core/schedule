@@ -38,7 +38,7 @@
 ## 5. 部署
 
 1. 生成配置表，根据实际部署情况修改
-1. 安装.示例：`yarn add @mmstudio/p000001`
+1. 安装.示例：`yarn add @mm-works/p000001`
 1. 启动`./node_moduels/.bin/mm-schedule`
 
 ## 6. Config
