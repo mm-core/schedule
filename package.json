@@ -1,6 +1,6 @@
 {
 	"name": "@mmstudio/schedule",
-	"version": "1.0.202004171021",
+	"version": "1.1.0",
 	"description": "Node.js schedule service.",
 	"scripts": {
 		"test": "cp ./tests/s001.js ./dist/ && npm start",
@@ -40,8 +40,8 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@mmstudio/invoke": "1.1.202004170948",
 		"@mmstudio/config": "2.0.1",
+		"@mmstudio/invoke": "1.1.202004170948",
 		"anylogger": "1.0.9",
 		"anylogger-log4js": "0.2.0",
 		"log4js": "6.3.0",
