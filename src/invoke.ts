@@ -25,7 +25,7 @@ export default async function invoke<T>(service: string, content: unknown) {
 		const path = await (async () => {
 			try {
 				// !!! await added here to get exception
-				return await resolve_path(file_name, join(cwd, 'dist'));
+				return await resolve_path(file_name, join(cwd, 'dist', 'schedule'));
 			} catch (error) {
 				logger.trace(error);
 				logger.error(`Could not load service:${file_name}`);
