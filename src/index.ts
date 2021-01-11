@@ -1,14 +1,25 @@
 #!/usr/bin/env node
-import invoke from '@mmstudio/invoke';
-import { configure, getLogger } from 'log4js';
+import 'anylogger-log4js';
+import { configure } from 'log4js';
 import schedule from 'node-schedule';
-import uuid from 'uuid';
 import config from '@mmstudio/config';
+import anylogger from 'anylogger';
+import dotenvLoad from 'dotenv-load';
+import invoke from './invoke';
 
-const logger = getLogger();
+const logger = anylogger('@mmstudio/schedule');
+
+interface IJob {
+	service: string;
+	description: string;
+	rule: string;
+	start: string | number;
+	end: string | number;
+	data: Record<string, unknown>;
+}
 
 function init_schedule() {
-	const jobs = config.jobs || [];
+	const jobs = config.jobs as IJob[] || [];
 	jobs.forEach((job) => {
 		const desc = JSON.stringify(job);
 		logger.debug(`Waiting for schedule: ${desc}`);
@@ -18,25 +29,24 @@ function init_schedule() {
 			rule,
 			start
 		}, async (dt) => {
-			const actionid = uuid();
 			const tm = new Date();
-			logger.info(`Start schedule job:<${desc}>, actionid=${actionid}, which is supposed to run at:${dt.toUTCString()}, but actually ran at ${tm.toUTCString()}`);
+			logger.info(`Start schedule job:<${desc}>, which is supposed to run at:${dt.toUTCString()}, but actually ran at ${tm.toUTCString()}`);
 			try {
-				const ret = await invoke(job.service, job.data, actionid);
+				const ret = await invoke(job.service, job.data);
 				const str = JSON.stringify(ret);
-				logger.info(`Schedule job:<${desc}>, actionid=${actionid}, Result=${str}`);
+				logger.info(`Schedule job:<${desc}>, result=${str}`);
 			} catch (err) {
 				logger.trace(err);
-				const e_msg = err.message;
-				logger.error(`Service Error:${e_msg}`, actionid);
+				const e_msg = (err as Error).message;
+				logger.error(`Service Error:${e_msg}`);
 			} finally {
 				const cost = new Date().getTime() - tm.getTime();
 				if (cost > 500) {
-					logger.error(`Finish schedule job:${desc}, actionid = ${actionid},Costing ${cost}ms`);
+					logger.error(`Finish schedule job:${desc},Costing ${cost}ms`);
 				} else if (cost > 200) {
-					logger.warn(`Finish schedule job:${desc}, actionid = ${actionid},Costing ${cost}ms`);
+					logger.warn(`Finish schedule job:${desc},Costing ${cost}ms`);
 				} else {
-					logger.info(`Finish schedule job:${desc}, actionid = ${actionid},Costing ${cost}ms`);
+					logger.info(`Finish schedule job:${desc},Costing ${cost}ms`);
 				}
 			}
 		});
@@ -48,6 +58,7 @@ function main() {
 		process.exit(0);
 	});
 
+	dotenvLoad();
 	configure('./log4js.json');
 	logger.warn('Starting Node.js schedule service...........^v^');
 	init_schedule();
