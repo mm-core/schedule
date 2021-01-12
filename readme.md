@@ -5,12 +5,18 @@
 - [1. Description](#1-description)
 - [2. 服务](#2-服务)
 - [3. 注意](#3-注意)
-- [4. 调试](#4-调试)
-- [5. 部署](#5-部署)
-- [6. Config](#6-config)
-	- [6.1. mm.json](#61-mmjson)
-		- [6.1.1. rule](#611-rule)
-	- [6.2. log4js.json](#62-log4jsjson)
+- [4. 开发](#4-开发)
+- [5. 编译](#5-编译)
+- [6. 运行](#6-运行)
+- [7. Config](#7-config)
+	- [7.1. mm.json](#71-mmjson)
+		- [7.1.1. service](#711-service)
+		- [7.1.2. description](#712-description)
+		- [7.1.3. rule](#713-rule)
+		- [7.1.4. start](#714-start)
+		- [7.1.5. end](#715-end)
+		- [7.1.6. data](#716-data)
+	- [7.2. log4js.json](#72-log4jsjson)
 
 <!-- /TOC -->
 
@@ -31,19 +37,21 @@
 
 在正式环境部署时，最好使用docker进行，且设定其在导致异常时重启容器。
 
-## 4. 调试
+## 4. 开发
 
-本机调试可以在终端运行`npm run schedule`
+`yarn dev-schedule`
 
-## 5. 部署
+## 5. 编译
 
-1. 生成配置表，根据实际部署情况修改
-1. 安装.示例：`yarn add @mm-works/p000001`
-1. 启动`./node_moduels/.bin/mm-schedule`
+`yarn build`
 
-## 6. Config
+## 6. 运行
 
-### 6.1. mm.json
+`yarn build`
+
+## 7. Config
+
+### 7.1. mm.json
 
 ``` json
 {
@@ -62,7 +70,15 @@
 }
 ```
 
-#### 6.1.1. rule
+#### 7.1.1. service
+
+服务文件名，为项目下 src/schedule下相对文件名。
+
+#### 7.1.2. description
+
+定时任务说明
+
+#### 7.1.3. rule
 
 ```txt
 *    *    *    *    *    *
@@ -85,6 +101,36 @@
 - `m,n` 表示`m`和`n`都执行
 - `#m` 表示第二个，如`* * * * * 0#m`表示每个月的第二个周日
 
-### 6.2. log4js.json
+#### 7.1.4. start
+
+时间戳或时间字符串，如
+
+```ts
+1610440541000
+"1/12/2021, 4:35:41 PM"
+"1/12/2021, 16:35:41"
+"1/12/2021"
+"Tue Jan 12 2021"
+"Tue Jan 12 2021 16:35:41 GMT+0800 (China Standard Time)"
+"Tue Jan 12 2021 16:35:41 GMT+0800"
+```
+
+#### 7.1.5. end
+
+```ts
+1610440541000
+"1/12/2021, 4:35:41 PM"
+"1/12/2021, 16:35:41"
+"1/12/2021"
+"Tue Jan 12 2021"
+"Tue Jan 12 2021 16:35:41 GMT+0800 (China Standard Time)"
+"Tue Jan 12 2021 16:35:41 GMT+0800"
+```
+
+#### 7.1.6. data
+
+附加固定参数，比如第三方服务如微信服务的appid之类的。
+
+### 7.2. log4js.json
 
 日志配置，具体请参考官方说明：[log4js](https://github.com/nomiddlename/log4js-node)
