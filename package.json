@@ -10,7 +10,8 @@
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
 		"build": "npm run clean && npm run lint && npm run compile",
-		"up": "git pull git@github.com:mm-core/base.git cjs"
+		"up": "git pull git@github.com:mm-core/base.git cjs",
+		"release": "np"
 	},
 	"bin": {
 		"mm-schedule": "./dist/index.js"
@@ -19,14 +20,14 @@
 		"type": "https+git",
 		"url": "https://github.com/mm-core/schedule.git"
 	},
-	"homepage": "https://mm-works.github.io",
+	"homepage": "https://01factory.github.io",
 	"main": "dist/index.js",
 	"keywords": [
 		"mm",
 		"mmstudio",
-		"蛮蛮",
-		"蛮蛮工作室",
-		"插件式",
+		"01",
+		"零壹",
+		"微工厂",
 		"原子操作",
 		"控件",
 		"框架"
@@ -39,6 +40,10 @@
 		"contributors": []
 	},
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
 	"dependencies": {
 		"@mmstudio/config": "3.0.0",
 		"anylogger": "1.0.10",
@@ -58,7 +63,11 @@
 		"del-cli": "latest",
 		"eslint": "latest",
 		"eslint-config-prettier": "latest",
+		"eslint-config-ts-lambdas": "latest",
 		"eslint-plugin-import": "latest",
+		"eslint-plugin-prettier": "latest",
+		"eslint-plugin-react": "latest",
+		"np": "latest",
 		"prettier": "latest",
 		"typescript": "next"
 	}
