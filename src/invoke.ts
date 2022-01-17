@@ -33,10 +33,10 @@ export default async function invoke<T>(service: string, content: unknown) {
 			}
 		})();
 		if (debug) {
-			delete (require.cache as { [key: string]: unknown })[path];
-		}
-		// eslint-disable-next-line import/no-dynamic-require
-		const atom = (require(path) as { default(c: unknown): Promise<T> });
+			delete (require.cache as { [key: string]: unknown; })[path];
+		} 
+		// eslint-disable-next-line @typescript-eslint/no-var-requires,import/no-dynamic-require
+		const atom = (require(path) as { default(c: unknown): Promise<T>; });
 		return await atom.default(content);
 	} catch (e) {
 		const err = e as Error;
