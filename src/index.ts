@@ -29,7 +29,7 @@ function init_schedule() {
 			rule,
 			start
 		}, async (dt) => {
-			conf();
+			// conf();
 			const tm = new Date();
 			logger.info(`Start schedule job:<${desc}>, which is supposed to run at:${dt.toUTCString()}, but actually ran at ${tm.toUTCString()}`);
 			try {
