@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import 'anylogger-log4js';
-import { configure } from 'log4js';
-import schedule from 'node-schedule';
 import config from '@mmstudio/config';
 import anylogger from 'anylogger';
+import 'anylogger-log4js';
 import dotenvLoad from 'dotenv-load';
+import { configure } from 'log4js';
+import schedule from 'node-schedule';
 import invoke from './invoke';
 
 const logger = anylogger('@mmstudio/schedule');
@@ -54,8 +54,15 @@ function init_schedule() {
 }
 
 function main() {
-	process.on('SIGINT', () => {
-		process.exit(0);
+	process.on('SIGINT', async () => {
+		try {
+			await schedule.gracefulShutdown();
+		} catch (e) {
+			logger.error((e as Error).message);
+			logger.error(e);
+		} finally {
+			process.exit(0);
+		}
 	});
 
 	dotenvLoad();
