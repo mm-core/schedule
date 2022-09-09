@@ -3,7 +3,7 @@
 	"version": "2.0.2",
 	"description": "Node.js schedule service.",
 	"scripts": {
-		"test": "cp ./tests/s001.js ./dist/ && npm start",
+		"dev": "cp ./tests/s001.js ./dist/ && npm start",
 		"start": "tsc && node ./dist/index.js",
 		"watch": "tsc -w & ava --watch ./tests/*.js",
 		"clean": "del-cli ./dist/",
@@ -37,7 +37,7 @@
 			"name": "taoqf",
 			"email": "tao_qiufeng@126.com"
 		},
-		"contributors": []
+		"contributors": [ ]
 	},
 	"license": "MIT",
 	"publishConfig": {
