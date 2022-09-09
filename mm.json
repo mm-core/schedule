@@ -1,7 +1,7 @@
 {
 	"jobs": [
 		{
-			"service": "s001",
+			"service": "../s001",
 			"description": "example for schedule",
 			"rule": "* * * * * *",
 			"start": "",
