@@ -29,6 +29,7 @@ function init_schedule() {
 			rule,
 			start
 		}, async (dt) => {
+			conf();
 			const tm = new Date();
 			logger.info(`Start schedule job:<${desc}>, which is supposed to run at:${dt.toUTCString()}, but actually ran at ${tm.toUTCString()}`);
 			try {
@@ -66,10 +67,15 @@ function main() {
 	});
 
 	dotenvLoad();
-	configure('./log4js.json');
+	conf();
 	logger.warn('Starting Node.js schedule service...........^v^');
 	init_schedule();
 	logger.warn('Node.js schedule service is started...........^v^');
+}
+
+function conf() {
+	require('anylogger-log4js');
+	configure('./log4js.json');
 }
 
 main();
