@@ -11,7 +11,7 @@
 		"compile": "tsc",
 		"build": "npm run clean && npm run lint && npm run compile",
 		"up": "git pull git@github.com:mm-core/base.git cjs",
-		"release": "np"
+		"release": "npm run build && np"
 	},
 	"bin": {
 		"mm-schedule": "./dist/index.js"
@@ -37,7 +37,7 @@
 			"name": "taoqf",
 			"email": "tao_qiufeng@126.com"
 		},
-		"contributors": []
+		"contributors": [ ]
 	},
 	"license": "MIT",
 	"publishConfig": {
