@@ -37,7 +37,7 @@
 			"name": "taoqf",
 			"email": "tao_qiufeng@126.com"
 		},
-		"contributors": []
+		"contributors": [ ]
 	},
 	"license": "MIT",
 	"publishConfig": {
@@ -45,7 +45,6 @@
 		"registry": "https://registry.npmjs.org"
 	},
 	"dependencies": {
-		"@mmstudio/config": "3.0.0",
 		"anylogger": "1.0.10",
 		"anylogger-log4js": "0.2.0",
 		"dotenv-load": "2.0.0",
@@ -53,7 +52,6 @@
 		"node-schedule": "1.3.2"
 	},
 	"devDependencies": {
-		"@mmstudio/global": "latest",
 		"@types/dotenv-load": "^2.0.0",
 		"@types/node": "latest",
 		"@types/node-schedule": "latest",

@@ -62,16 +62,6 @@
   resolved "https://repo.huaweicloud.com/repository/npm/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@mmstudio/config@3.0.0":
-  version "3.0.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/@mmstudio/config/-/config-3.0.0.tgz#707436fcd15b2a474b05a950e383d385db32c644"
-  integrity sha512-Ml5EOvEFYkcmsbqbFPTD9CIs9ueTWHi1YCDzAs5TTQZ1c1WRSKd6XMRTC/fQ7aDy3M4cw/o+zraGV8WhxKSEUg==
-
-"@mmstudio/global@latest":
-  version "1.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/@mmstudio/global/-/global-1.1.0.tgz#268b8f16553a86d55fc30a05aaa26dd3644c023f"
-  integrity sha512-e0PlJrmK2ZFGZWjkWmpJdwHnO/bGHTtvvB6M3ExFIb1/N46o9wt7pHtcEpvlI+USSZemxEyIEi+qau6KNVYwvQ==
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://repo.huaweicloud.com/repository/npm/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

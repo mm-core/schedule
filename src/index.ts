@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import config from '@mmstudio/config';
 import anylogger from 'anylogger';
 import 'anylogger-log4js';
 import dotenvLoad from 'dotenv-load';
@@ -19,7 +18,7 @@ interface IJob {
 }
 
 function init_schedule() {
-	const jobs = config.jobs as IJob[] || [];
+	const jobs = JSON.parse(process.env.SCHEDULE_JOBS || '[]') as IJob[];
 	jobs.forEach((job) => {
 		const desc = JSON.stringify(job);
 		logger.debug(`Waiting for schedule: ${desc}`);
