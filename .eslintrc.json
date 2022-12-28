@@ -3,12 +3,6 @@
 		"es6": true,
 		"node": true
 	},
-	"settings": {
-		"react": {
-			"pragma": "React",
-			"version": "detect"
-		}
-	},
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -18,8 +12,7 @@
 		"plugin:import/warnings",
 		"plugin:import/typescript",
 		"prettier",
-		"eslint-config-ts-lambdas",
-		"eslint-config-ts-lambdas/react"
+		"eslint-config-ts-lambdas"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {

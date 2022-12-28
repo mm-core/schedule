@@ -1,8 +1,8 @@
 import { constants, promises as fs } from 'fs';
 import { join } from 'path';
-import anylogger from 'anylogger';
+import { getLogger } from 'log4js';
 
-const logger = anylogger('@mmstudio/schedule/invoke');
+const logger = getLogger('@mmstudio/schedule/invoke');
 
 async function resolve_path(file_name: string, path: string) {
 	// !!! We could not use require.resolve here, because electron does not support.
@@ -34,7 +34,7 @@ export default async function invoke<T>(service: string, content: unknown) {
 		})();
 		if (debug) {
 			delete (require.cache as { [key: string]: unknown; })[path];
-		} 
+		}
 		// eslint-disable-next-line @typescript-eslint/no-var-requires,import/no-dynamic-require
 		const atom = (require(path) as { default(c: unknown): Promise<T>; });
 		return await atom.default(content);

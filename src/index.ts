@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-import anylogger from 'anylogger';
-import 'anylogger-log4js';
 import dotenvLoad from 'dotenv-load';
-import { configure } from 'log4js';
+import { configure, getLogger } from 'log4js';
 import schedule from 'node-schedule';
 import invoke from './invoke';
 
-const logger = anylogger('@mmstudio/schedule');
+const logger = getLogger('@mmstudio/schedule');
 
 interface IJob {
 	service: string;
@@ -73,7 +71,6 @@ function main() {
 }
 
 function conf() {
-	require('anylogger-log4js');
 	configure('./log4js.json');
 }
 
