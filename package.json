@@ -1,6 +1,6 @@
 {
 	"name": "@mmstudio/schedule",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Node.js schedule service.",
 	"scripts": {
 		"dev": "cp ./tests/s001.js ./dist/ && npm start",
@@ -37,7 +37,7 @@
 			"name": "taoqf",
 			"email": "tao_qiufeng@126.com"
 		},
-		"contributors": [ ]
+		"contributors": []
 	},
 	"license": "MIT",
 	"publishConfig": {
